@@ -99,7 +99,7 @@ npm install -g @angular/cli
 
 ### Clonar el repositorio
 ```bash
-git clone https://github.com/usuario/nombre-repositorio.git
+git clone https://github.com/mariacamilazapata155-svg/Bookswap.git
 ```
 
 ### Instalar dependencias
