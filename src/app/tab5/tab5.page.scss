@@ -1,0 +1,35 @@
+.toolbar {
+    ion-title {
+        font-weight: bold;
+    }
+}
+
+.back-btn {
+    color: #fff !important;
+}
+
+.fondo {
+    --background: #111;
+    color: white;
+}
+
+.switch-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.seccion-card {
+    background: #1b1b1b;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+}
+
+ion-avatar img {
+    border-radius: 50%;
+}
+
+ion-item {
+    --color: #fff;
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Nuevo Mensaje</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo ion-padding">
+  <div class="form-container">
+    <ion-item>
+      <ion-label position="floating">Destinatario</ion-label>
+      <ion-input [(ngModel)]="nuevo.destinatario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Asunto</ion-label>
+      <ion-input [(ngModel)]="nuevo.asunto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-textarea rows="6" [(ngModel)]="nuevo.mensaje"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" color="primary" (click)="enviar()">
+      <ion-icon name="send-outline" slot="start"></ion-icon>
+      Enviar
+    </ion-button>
+  </div>
+</ion-content>

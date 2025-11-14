@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="dark" class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/libros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding perfil-container">
+
+  <div class="perfil-card">
+    <div class="foto-container">
+      <img
+        [src]="userPhoto || 'assets/default-avatar.png'"
+        alt="Foto de perfil"
+        class="foto-perfil"
+        (click)="cambiarFoto()"
+      />
+      <ion-button fill="clear" color="primary" (click)="cambiarFoto()" class="cambiar-foto">
+        Cambiar foto
+      </ion-button>
+    </div>
+
+    <h2 class="nombre-usuario">{{ userName }}</h2>
+
+    <div class="botones-container">
+      <ion-button expand="block" fill="outline" (click)="abrirEditarPerfil()">
+        Editar perfil
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="verLibros()">
+        Ver mis libros
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="verHistorial()">
+        Historial de intercambios
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="logout()">
+        Cerrar sesión
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-modal [isOpen]="isEditOpen" (willDismiss)="cerrarEditarPerfil()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Editar Perfil</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="cerrarEditarPerfil()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input [(ngModel)]="userName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input [(ngModel)]="userEmail"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nueva contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="userPassword"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="success" (click)="guardarPerfil()">
+          Guardar cambios
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

@@ -1,18 +1,21 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
+  templateUrl: './tabs.page.html',
+  styleUrls: ['./tabs.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule],
 })
 export class TabsPage {
-  public environmentInjector = inject(EnvironmentInjector);
+  isLoggedIn = false;
 
-  constructor() {
-    addIcons({ triangle, ellipse, square });
+  constructor(private auth: AuthService) {}
+
+  async ngOnInit() {
+    this.isLoggedIn = await this.auth.isLoggedIn();
   }
 }

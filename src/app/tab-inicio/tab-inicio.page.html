@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="register-container">
+    <div class="register-card">
+
+      <h2 class="welcome-title">Bienvenido a <span>BookSwap</span></h2>
+      <p class="welcome-subtitle">Comparte tus libros, descubre nuevas historias 📚</p>
+
+      <h1>Registrarse</h1>
+
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <ion-item>
+          <ion-label position="floating">Nombre completo</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="user.name"
+            name="name"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="user.password"
+            name="password"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="user.confirmPassword"
+            name="confirmPassword"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" (click)="register(registerForm)">
+          REGISTRARSE
+        </ion-button>
+
+        <p style="text-align:center; margin-top: 10px;">
+          ¿Ya tienes cuenta?
+          <a (click)="goToLogin()">Inicia sesión</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</ion-content>

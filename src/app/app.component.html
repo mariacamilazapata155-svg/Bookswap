@@ -1,3 +1,27 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <!-- Menú lateral solo visible tras iniciar sesión -->
+  <ion-menu side="start" menuId="mainMenu" contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>BookSwap</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content color="dark">
+      <ion-list>
+        <ion-item routerLink="/tabs/libros" routerDirection="root">📚 Mis Libros</ion-item>
+        <ion-item routerLink="/tabs/detalles" routerDirection="forward">📚 Detalles</ion-item>
+        <ion-item routerLink="/tabs/inicio" routerDirection="forward">📝 Registro</ion-item>
+        <ion-item routerLink="/tabs/perfil" routerDirection="forward">👤 Perfil</ion-item>
+        <ion-item routerLink="/tabs/intercambios" routerDirection="forward">🔄 Intercambios</ion-item>
+        <ion-item routerLink="/tabs/mensajes" routerDirection="forward">💬 Mensajes</ion-item>
+        <ion-item (click)="logout()">🚪 Cerrar Sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Contenido principal -->
+  <div class="ion-page" id="main-content">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="dark" class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/libros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mensajes & Notificaciones</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="toggleNuevoMensaje()">
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        {{ mostrarFormulario ? 'Cerrar' : 'Nuevo mensaje' }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngIf="mostrarFormulario" class="form-card">
+    <ion-card-header>
+      <ion-card-title>Enviar nuevo mensaje</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="stacked">Destinatario</ion-label>
+        <ion-input [(ngModel)]="nuevoMensaje.destinatario" placeholder="Correo o usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Asunto</ion-label>
+        <ion-input [(ngModel)]="nuevoMensaje.asunto" placeholder="Tema del mensaje"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Mensaje</ion-label>
+        <ion-textarea [(ngModel)]="nuevoMensaje.contenido" placeholder="Escribe tu mensaje aquí..."></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="enviarMensaje()">
+        Enviar mensaje
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-segment [(ngModel)]="segment" class="segment-tabs">
+    <ion-segment-button value="mensajes">
+      <ion-label>Mensajes</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="notificaciones">
+      <ion-label>Notificaciones</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list *ngIf="segment === 'mensajes' && mensajes.length > 0">
+    <ion-item *ngFor="let m of mensajes" (click)="abrirMensaje(m)">
+      <ion-avatar slot="start">
+        <img [src]="m.foto || 'assets/default-avatar.png'">
+      </ion-avatar>
+
+      <ion-label>
+        <h2>{{ m.asunto }}</h2>
+        <p>De: {{ m.destinatario }}</p>
+        <p>{{ m.fecha | date:'short' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="segment === 'mensajes' && mensajes.length === 0" class="ion-text-center">
+    <p>No tienes mensajes aún.</p>
+  </div>
+
+  <ion-list *ngIf="segment === 'notificaciones' && notificaciones.length > 0">
+    <ion-item *ngFor="let n of notificaciones" (click)="abrirNotificacion(n)">
+      <ion-label>
+        <h2>{{ n.mensaje }}</h2>
+        <p>{{ n.fecha | date:'short' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="segment === 'notificaciones' && notificaciones.length === 0" class="ion-text-center">
+    <p>No tienes notificaciones aún.</p>
+  </div>
+
+</ion-content>

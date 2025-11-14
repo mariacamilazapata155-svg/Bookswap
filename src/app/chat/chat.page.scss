@@ -1,0 +1,28 @@
+.fondo {
+    --background: #121212;
+    color: white;
+}
+
+.form-container {
+    max-width: 480px;
+    margin: auto;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+ion-item {
+    --background: transparent;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+ion-textarea, ion-input {
+    color: #fff;
+}
+
+ion-button {
+    margin-top: 20px;
+    border-radius: 12px;
+}

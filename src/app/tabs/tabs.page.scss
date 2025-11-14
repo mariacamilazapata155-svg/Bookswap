@@ -1,1 +1,18 @@
+ion-tab-bar {
+    --background: #8609ac;
+    --color: #070303;
+    --color-selected: #faf6f6;
+    border-top: 1px solid #ddd;
+}
+
+ion-tab-button {
+    flex-direction: column;
+    font-size: 12px;
+    --padding-start: 4px;
+    --padding-end: 4px;
+}
+
+ion-icon {
+    font-size: 22px;
+}
 

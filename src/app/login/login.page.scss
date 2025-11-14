@@ -1,0 +1,86 @@
+ion-content {
+    --background: linear-gradient(to bottom, #1a1a1a, #222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #0f0f0f;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    color: #fff;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #7b5fd0;
+    letter-spacing: 1px;
+}
+
+.login-card h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+}
+
+ion-item {
+    --background: #1c1c1c;
+    --border-radius: 10px;
+    --min-height: 50px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+ion-input {
+    color: #fff;
+}
+
+ion-button {
+    --background: #6a4bc4;
+    --border-radius: 10px;
+    --color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
+}
+
+ion-button:hover {
+    transform: scale(1.03);
+}
+
+.register-link,
+.forgot-link {
+    margin-top: 18px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.register-link a,
+.forgot-link a {
+    color: #7b5fd0;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.register-link a:hover,
+.forgot-link a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,54 @@
+.perfil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    background: linear-gradient(180deg, #1e1e1e, #2c2c2c);
+}
+
+.perfil-card {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.foto-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--ion-color-primary);
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.cambiar-foto {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.nombre-usuario {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.botones-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+ion-button {
+    width: 90%;
+    max-width: 300px;
+}

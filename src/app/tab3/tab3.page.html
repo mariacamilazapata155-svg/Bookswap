@@ -1,17 +1,116 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="dark" class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/libros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Intercambios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="toggleFormulario()">
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        {{ mostrarFormulario ? 'Cerrar' : 'Agregar libro' }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding fondo">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div *ngIf="mostrarFormulario" class="form-container">
+    <ion-card class="form-card">
+      <ion-card-header>
+        <ion-card-title>Agregar nuevo libro</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label position="stacked">Título</ion-label>
+          <ion-input [(ngModel)]="intercambio.titulo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Autor</ion-label>
+          <ion-input [(ngModel)]="intercambio.autor"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Categoría</ion-label>
+          <ion-input [(ngModel)]="intercambio.categoria"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Estado</ion-label>
+          <ion-input [(ngModel)]="intercambio.estado"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea [(ngModel)]="intercambio.descripcion"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ubicación</ion-label>
+          <ion-input [(ngModel)]="intercambio.ubicacion"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>📸 Foto del libro</ion-label>
+          <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+        </ion-item>
+
+        <p *ngIf="selectedFileName" class="file-name">
+          Archivo: {{ selectedFileName }}
+        </p>
+
+        <ion-button expand="block" color="success" (click)="publicar()">Publicar libro</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="librosIntercambiados.length > 0; else sinIntercambios" class="grid-container">
+
+    <ion-card *ngFor="let libro of librosIntercambiados" class="libro-card">
+      
+      <img *ngIf="libro.photo; else noPortada" [src]="libro.photo" alt="Portada del libro" />
+      <ng-template #noPortada>
+        <div class="sin-portada">Sin portada</div>
+      </ng-template>
+
+      <ion-card-header>
+        <ion-card-title>{{ libro.title }}</ion-card-title>
+        <ion-card-subtitle>{{ libro.author }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <p><strong>Categoría:</strong> {{ libro.category || 'No especificada' }}</p>
+        <p><strong>Estado del libro:</strong> {{ libro.status }}</p>
+        <p><strong>Intercambio:</strong> {{ libro.intercambioEstado }}</p>
+
+        <ion-item>
+          <ion-label>Actualizar estado</ion-label>
+          <ion-select
+            interface="popover"
+            [(ngModel)]="libro.intercambioEstado"
+            (ionChange)="cambiarEstado(libro, libro.intercambioEstado)"
+          >
+            <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+            <ion-select-option value="Aceptado">Aceptado</ion-select-option>
+            <ion-select-option value="Rechazado">Rechazado</ion-select-option>
+            <ion-select-option value="Completado">Completado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <ng-template #sinIntercambios>
+    <ion-text color="medium">
+      <p class="ion-text-center">No tienes intercambios aún 📚</p>
+    </ion-text>
+  </ng-template>
+
 </ion-content>
