@@ -1,11 +1,15 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.example.bookswap', 
   appName: 'BookSwap',
-  webDir: 'www',
+  webDir: 'www', 
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    cleartext: true
+  },
+  android: {
+    allowMixedContent: true
   }
 };
 
