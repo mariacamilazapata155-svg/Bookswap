@@ -1,26 +1,28 @@
 <ion-content>
-  <div class="login-container">
-    <div class="login-card">
+    <div class="login-container">
+      <div class="login-card">
 
       <h2 class="app-title">📚 BookSwap</h2>
 
       <h1>Iniciar sesión</h1>
 
-      <ion-item lines="none">
         <ion-input
           [(ngModel)]="email"
           type="email"
           placeholder="Correo electrónico"
+          legacy
+          fill="outline"
+          class="isolated-input"
         ></ion-input>
-      </ion-item>
 
-      <ion-item lines="none">
         <ion-input
           [(ngModel)]="password"
           type="password"
           placeholder="Contraseña"
+          legacy
+          fill="outline"
+          class="isolated-input"
         ></ion-input>
-      </ion-item>
 
       <ion-button expand="block" (click)="login()">ENTRAR</ion-button>
 
@@ -32,6 +34,6 @@
       <div class="forgot-link">
         <a (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</a>
       </div>
+      </div>
     </div>
-  </div>
 </ion-content>

@@ -1,6 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonicModule, ToastController, ModalController } from '@ionic/angular';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonButtons,
+  IonBackButton,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonButton,
+  IonText,
+  ToastController,
+  ModalController
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BookService } from '../services/book';
@@ -12,7 +28,23 @@ import { NotificationService } from '../services/notification.service';
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonButtons,
+    IonBackButton,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent,
+    IonButton,
+    IonText,
+    CommonModule,
+    FormsModule
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Tab2Page {
@@ -64,10 +96,10 @@ export class Tab2Page {
     this.bookService.addIntercambio(book);
 
     this.notifService.agregarNotificacion({
-    mensaje: `Has solicitado un intercambio por "${book.title}"`,
-    fecha: new Date(),
-    tipo: 'intercambio'
-  });
+      mensaje: `Has solicitado un intercambio por "${book.title}"`,
+      fecha: new Date(),
+      tipo: 'intercambio'
+    });
 
     const toast = await this.toastCtrl.create({
       message: `Solicitud enviada para "${book.title}" 📬`,

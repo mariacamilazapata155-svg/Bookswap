@@ -1,15 +1,59 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { IonicModule, ToastController } from '@ionic/angular';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel,
+  IonList,
+  IonItem,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonButton,
+  IonInput,
+  IonTextarea,
+  IonIcon,
+  IonBadge,
+  ToastController
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../services/notification.service';
 import { Location } from '@angular/common';
+import { addIcons } from 'ionicons';
+import { add, send, arrowBack } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab5',
   templateUrl: './tab5.page.html',
   styleUrls: ['./tab5.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonSegment,
+    IonSegmentButton,
+    IonLabel,
+    IonList,
+    IonItem,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton,
+    IonInput,
+    IonTextarea,
+    IonIcon,
+    IonBadge,
+    CommonModule,
+    FormsModule
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Tab5Page {
@@ -31,7 +75,13 @@ export class Tab5Page {
     private notifService: NotificationService,
     private location: Location,
     private toastCtrl: ToastController
-  ) {}
+  ) {
+    addIcons({
+      add,
+      send,
+      'arrow-back': arrowBack
+    });
+  }
 
   ionViewWillEnter() {
     this.notificaciones = this.notifService.getNotificaciones();

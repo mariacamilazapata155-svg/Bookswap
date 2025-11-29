@@ -1,12 +1,5 @@
 /*
  * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
 /* Core CSS required for Ionic components to work properly */
@@ -27,15 +20,8 @@
 
 /**
  * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
  */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
-
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -55,12 +41,12 @@ ion-content {
 
 @keyframes fadeIn {
     from {
-    opacity: 0;
-    transform: translateY(10px);
+        opacity: 0;
+        transform: translateY(10px);
     }
     to {
-    opacity: 1;
-    transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     } 
 }
 
@@ -80,7 +66,7 @@ ion-content {
 }
 
 .delete-alert button.alert-button:nth-child(2) {
-  color: #b23b3b; /* Mismo tono que el botón de borrado */
+    color: #b23b3b;
 }
 
 ion-toolbar {
@@ -90,12 +76,4 @@ ion-toolbar {
     letter-spacing: 0.3px;
     backdrop-filter: blur(6px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-
-ion-tab-bar {
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-primary-contrast);
-    --color-selected: #590f96;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
 }

@@ -1,9 +1,5 @@
 ion-content {
     --background: linear-gradient(to bottom, #1a1a1a, #222);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 }
 
 .login-container {
@@ -11,16 +7,17 @@ ion-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
     padding: 20px;
 }
 
 .login-card {
     background-color: #0f0f0f;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     text-align: center;
     color: #fff;
 }
@@ -40,29 +37,31 @@ ion-content {
     color: #e0e0e0;
 }
 
-ion-item {
-    --background: #1c1c1c;
-    --border-radius: 10px;
-    --min-height: 50px;
+.isolated-input {
+    --background: #1c1c1c; 
+    --color: #fff; 
+    --placeholder-color: #999;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    height: 50px;
     margin-bottom: 15px;
-    color: #fff;
-}
-
-ion-input {
-    color: #fff;
+    border: 1px solid #555; 
+    border-radius: 8px;
+    
+    &.ion-focused {
+        border-color: #7b5fd0;
+        box-shadow: 0 0 5px rgba(123, 95, 208, 0.7);
+    }
 }
 
 ion-button {
     --background: #6a4bc4;
     --border-radius: 10px;
-    --color: #fff;
+    --padding-top: 15px; 
+    --padding-bottom: 15px;
     font-weight: bold;
-    margin-top: 10px;
-    transition: transform 0.2s ease;
-}
-
-ion-button:hover {
-    transform: scale(1.03);
+    font-size: 1.1em;
+    margin-top: 20px;
 }
 
 .register-link,
@@ -70,17 +69,15 @@ ion-button:hover {
     margin-top: 18px;
     color: #ccc;
     font-size: 0.9rem;
-}
-
-.register-link a,
-.forgot-link a {
-    color: #7b5fd0;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.register-link a:hover,
-.forgot-link a:hover {
-    text-decoration: underline;
+    
+    a {
+        color: #7b5fd0;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

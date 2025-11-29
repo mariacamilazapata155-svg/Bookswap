@@ -51,3 +51,9 @@ ion-select, ion-searchbar {
 .ver-detalles:hover {
     opacity: 0.8;
 }
+
+ion-content {
+    --overflow: auto; 
+    display: block; 
+    height: 100%;
+}

@@ -1,9 +1,5 @@
 ion-content {
     --background: linear-gradient(to bottom, #1a1a1a, #222);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 }
 
 .register-container {
@@ -12,6 +8,7 @@ ion-content {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    min-height: 100%;
 }
 
 .register-card {
@@ -48,43 +45,63 @@ ion-content {
 .register-card h1 {
     font-size: 1.6rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-ion-item {
-    --background: #1c1c1c;
-    --border-radius: 10px;
-    --min-height: 45px;
-    margin-bottom: 12px;
-    color: #fff;
+.custom-input {
+    --background: #1c1c1c; 
+    --color: #fff; 
+    --placeholder-color: #999;
+    --placeholder-opacity: 0.7;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --border-color: #555;
+    --border-width: 2px;
+    --border-radius: 8px;
+    height: 56px;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    
+    &.ion-focused {
+        --border-color: #3b82f6; 
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+    }
+
+    &.has-value {
+        --border-color: #666;
+    }
 }
 
-ion-input {
-    color: #fff;
+ion-input::part(label) {
+    color: #b8b8b8;
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 ion-button {
     --background: #3b82f6;
     --border-radius: 10px;
-    --color: #fff;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
     font-weight: bold;
-    margin-top: 15px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    text-transform: uppercase;
 }
 
 .login-text {
     margin-top: 18px;
     color: #ccc;
-    font-size: 0.9rem;
-}
-
-.login-text a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.login-text a:hover {
-    text-decoration: underline;
+    font-size: 0.95rem;
+    
+    a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
