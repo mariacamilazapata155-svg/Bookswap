@@ -19,6 +19,10 @@ log.txt
 
 # Ionic
 /.ionic
+# Capacitor/Ionic: permitir www y android
+# /platforms  ← BORRADO
+# /plugins    ← BORRADO
+# /www        ← BORRADO
 
 # Compiled output
 /dist

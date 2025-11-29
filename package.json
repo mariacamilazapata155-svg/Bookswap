@@ -66,5 +66,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "^5.4.5"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "capacitor": {
+    "appId": "com.bookswap.app",
+    "appName": "BookSwap",
+    "webDir": "www"
+  }
 }
