@@ -8,51 +8,60 @@
       <h1>Registrarse</h1>
 
       <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-        <ion-item>
-          <ion-label position="floating">Nombre completo</ion-label>
-          <ion-input
-            type="text"
-            [(ngModel)]="user.name"
-            name="name"
-            required
-          ></ion-input>
-        </ion-item>
+        
+        <ion-input
+          class="custom-input"
+          type="text"
+          [(ngModel)]="user.name"
+          name="name"
+          placeholder="Nombre completo"
+          fill="outline"
+          label="Nombre completo"
+          label-placement="floating"
+          required
+        ></ion-input>
 
-        <ion-item>
-          <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input
-            type="email"
-            [(ngModel)]="user.email"
-            name="email"
-            required
-          ></ion-input>
-        </ion-item>
+        <ion-input
+          class="custom-input"
+          type="email"
+          [(ngModel)]="user.email"
+          name="email"
+          placeholder="Correo electrónico"
+          fill="outline"
+          label="Correo electrónico"
+          label-placement="floating"
+          required
+        ></ion-input>
 
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input
-            type="password"
-            [(ngModel)]="user.password"
-            name="password"
-            required
-          ></ion-input>
-        </ion-item>
+        <ion-input
+          class="custom-input"
+          type="password"
+          [(ngModel)]="user.password"
+          name="password"
+          placeholder="Contraseña"
+          fill="outline"
+          label="Contraseña"
+          label-placement="floating"
+          required
+        ></ion-input>
 
-        <ion-item>
-          <ion-label position="floating">Confirmar contraseña</ion-label>
-          <ion-input
-            type="password"
-            [(ngModel)]="user.confirmPassword"
-            name="confirmPassword"
-            required
-          ></ion-input>
-        </ion-item>
+        <ion-input
+          class="custom-input"
+          type="password"
+          [(ngModel)]="user.confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirmar contraseña"
+          fill="outline"
+          label="Confirmar contraseña"
+          label-placement="floating"
+          required
+        ></ion-input>
 
         <ion-button expand="block" (click)="register(registerForm)">
           REGISTRARSE
         </ion-button>
 
-        <p style="text-align:center; margin-top: 10px;">
+        <p class="login-text">
           ¿Ya tienes cuenta?
           <a (click)="goToLogin()">Inicia sesión</a>
         </p>

@@ -1,14 +1,61 @@
-import { Component } from '@angular/core';
-import { IonicModule, AlertController, ToastController } from '@ionic/angular';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent,
+  IonSearchbar,
+  IonSelect,
+  IonSelectOption,
+  IonList,
+  IonItem,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
+  IonLabel,
+  IonButton,
+  IonIcon,
+  IonFab,
+  IonFabButton,
+  IonAvatar,
+  IonText,
+  AlertController, 
+  ToastController 
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { BookService, Book } from '../services/book';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { add, create, trash, bookOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab1',
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonSearchbar,
+    IonSelect,
+    IonSelectOption,
+    IonList,
+    IonItem,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
+    IonLabel,
+    IonButton,
+    IonIcon,
+    IonFab,
+    IonFabButton,
+    IonAvatar,
+    IonText,
+    CommonModule, 
+    FormsModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tab1.page.html',
   styleUrls: ['./tab1.page.scss']
 })
@@ -24,13 +71,22 @@ export class Tab1Page {
     private toastCtrl: ToastController,
     private bookService: BookService,
     private router: Router
-  ) {}
+  ) {
+    addIcons({
+      add,
+      create,
+      trash,
+      'book-outline': bookOutline
+    });
+  }
 
   ionViewWillEnter() {
+    this.loadBooks();
+  }
+
+  private loadBooks() {
     const serviceBooks = this.bookService.getBooks();
-
     const publishedBooks = JSON.parse(localStorage.getItem('misLibros') || '[]');
-
     const combinedBooks = [...serviceBooks];
 
     publishedBooks.forEach((pb: any) => {
@@ -85,9 +141,12 @@ export class Tab1Page {
           handler: async (data) => {
             if (data.title && data.author) {
               await this.bookService.addBook(data);
-              this.books = this.bookService.getBooks();
-              this.applyFilters();
+              this.loadBooks();
               this.showToast('Libro agregado ✅');
+              return true;
+            } else {
+              this.showToast('⚠️ Completa todos los campos');
+              return false;
             }
           }
         }
@@ -112,8 +171,9 @@ export class Tab1Page {
             publishedBooks = publishedBooks.filter((pb: any) => pb.title !== book.title);
             localStorage.setItem('misLibros', JSON.stringify(publishedBooks));
 
-            this.ionViewWillEnter(); 
+            this.loadBooks();
             this.showToast('Libro eliminado correctamente');
+            return true;
           }
         }
       ]
@@ -137,8 +197,9 @@ export class Tab1Page {
           text: 'Guardar',
           handler: async (data) => {
             await this.bookService.updateBook(book.id, data);
-            this.ionViewWillEnter();
+            this.loadBooks();
             this.showToast('Libro actualizado ✏️');
+            return true;
           }
         }
       ]
@@ -156,7 +217,13 @@ export class Tab1Page {
   }
 
   verDetalles(book: any) {
-  console.log('verDetalles -> enviando id:', book?.id);
-  this.router.navigate(['/tabs/detalles', book.id]);
-}
+    console.log('verDetalles -> enviando id:', book?.id);
+    
+    if (!book || !book.id) {
+      this.showToast('⚠️ Error: Libro no válido');
+      return;
+    }
+    
+    this.router.navigate(['/tabs/detalles', book.id]);
+  }
 }

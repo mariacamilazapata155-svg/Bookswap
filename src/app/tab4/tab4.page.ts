@@ -1,16 +1,55 @@
-import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonAvatar,
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonModal,
+  IonButtons,
+  IonIcon
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { addIcons } from 'ionicons';
+import { camera, close, save, logOut, book, time } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
   styleUrls: ['./tab4.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonAvatar,
+    IonButton,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonModal,
+    IonButtons,
+    IonIcon,
+    CommonModule,
+    FormsModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Tab4Page {
   userName: string = 'Usuario';
@@ -20,7 +59,16 @@ export class Tab4Page {
 
   isEditOpen: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    addIcons({
+      camera,
+      close,
+      save,
+      'log-out': logOut,
+      book,
+      time
+    });
+  }
 
   async ngOnInit() {
     const user = await this.authService.getUser();
@@ -74,7 +122,6 @@ export class Tab4Page {
     });
 
     this.userPassword = '';
-
     this.isEditOpen = false;
   }
 
